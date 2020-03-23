@@ -11,9 +11,13 @@ var states:Dictionary ={}
 func is_empty():
 	return state_stack.size() ==0
 
+func connectChildSignal(sigName:String,method)->void:
+	print(self.states)
+	for state in states:
+		print(state)
+		self.states[state].connect(sigName,self,method)
 
-func register_state(sName:String,state:State)->void:
-	self.states[sName] =state
+
 
 # Called when the node enters the scene tree for the first time.
 func change_state(sName:String,params)->void:
@@ -23,7 +27,7 @@ func change_state(sName:String,params)->void:
 	state.onEnter(params);
 	self.state_stack.push_back(state)
 
-func push_state(sName:String,params:Array)->void:
+func push_state(sName:String,params)->void:
 	var state:State = self.states[sName]
 	state.onEnter(params)
 	self.state_stack.push_back(state);
