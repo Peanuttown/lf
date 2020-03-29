@@ -5,6 +5,7 @@ extends Label
 # var a = 2
 # var b = "text"
 
+var states = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,10 +15,20 @@ func _ready():
 	for stateKey in states:
 		var state : State= states[stateKey]
 		assert(state)
-		state.connect(sm.signal_push_state,self,"change_text")
-		state.connect(sm.signal_state_over,self,"change_text")
+		state.connect(sm.signal_push_state,self,"push_state")
+		state.connect(sm.signal_state_over,self,"pop_state")
+	self.push_state(sm.state_stack[0].state_name,null)
 
-func change_text(name:String,_params)->void:
+
+func pop_state(name:String,_params):
+	self.states.pop_back()
+	self.change_text(self.states.back())
+
+func push_state(name:String,_params):
+	self.states.push_back(name)
+	self.change_text(name)
+
+func change_text(name:String)->void:
 	self.text = name
 
 func _physics_process(delta:float):

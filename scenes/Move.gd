@@ -12,6 +12,7 @@ func onExit():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.state_name="move"
 	assert(owner.is_class("Node2D"))
 	self.owner_ = owner as Node2D
 	pass # Replace with function body.

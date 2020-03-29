@@ -8,6 +8,7 @@ extends State
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.state_name ="idle"
 	pass # Replace with function body.
 
 func onEnter(_params):
@@ -27,5 +28,6 @@ func custom_unhandle_input(event:InputEvent):
 
 func custom_physics_process(_dt:float):
 	pass
+
 
 

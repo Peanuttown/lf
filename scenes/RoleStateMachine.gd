@@ -26,7 +26,7 @@ func _ready():
 	self.connectChildSignal(sm.signal_push_state,sm.method_push_state)
 	self.connectChildSignal(sm.signal_state_over,sm.method_pop_state)
 	#chose one state
-	self.change_state("idle",null)
+	self.push_state("idle",null)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
