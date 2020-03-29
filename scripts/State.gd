@@ -9,6 +9,9 @@ class_name State
 signal push_state
 signal state_over
 
+var signal_push_state="push_state"
+var signal_state_over = "state_over"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

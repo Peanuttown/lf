@@ -1,4 +1,4 @@
-extends "res://scripts/State.gd"
+extends State
 
 
 # Declare member variables here. Examples:

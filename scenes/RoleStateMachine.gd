@@ -1,4 +1,5 @@
-extends "res://scripts/StateMachine.gd"
+#extends "res://scripts/StateMachine.gd"
+extends StateMachine
 
 
 # Declare member variables here. Examples:
@@ -21,8 +22,9 @@ func _ready():
 	self.states["idle"] =idle
 	self.states["move"] =move
 	self.states["jump"] =jump
-	self.connectChildSignal("push_state","push_state")
-	self.connectChildSignal("state_over","pop_state")
+	var sm = (self as StateMachine)
+	self.connectChildSignal(sm.signal_push_state,sm.method_push_state)
+	self.connectChildSignal(sm.signal_state_over,sm.method_pop_state)
 	#chose one state
 	self.change_state("idle",null)
 

@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "State",
 "language": "GDScript",
 "path": "res://scripts/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://scripts/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "Child": "",
 "Game": "",
 "Main": "",
-"State": ""
+"State": "",
+"StateMachine": ""
 }
 
 [application]
@@ -44,6 +50,15 @@ config/icon="res://icon.png"
 [autoload]
 
 game="*res://TestScene/game.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
 
 [input]
 

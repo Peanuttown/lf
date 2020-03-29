@@ -1,4 +1,4 @@
-extends "res://scripts/State.gd"
+extends State
 
 
 # Declare member variables here. Examples:
@@ -16,13 +16,16 @@ func onEnter(_params):
 func onExit():
 	print("idle onExit")
 
-func update(_dt:float):
+func custom_process(_dt:float):
 	pass
 
-func proc_input(event:InputEvent):
+func custom_unhandle_input(event:InputEvent):
 	if event.is_action_pressed("jump"):
 		emit_signal("push_state","jump")
 	if event.is_action_pressed("move"):
 		self.emit_signal("push_state","move",null)
+
+func custom_physics_process(_dt:float):
+	pass
 
 

@@ -9,8 +9,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var game = Game.new()
-	print(game.my_name)
-	print(game.test_name)
 
 func do():
 	print("parent do")
