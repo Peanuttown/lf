@@ -1,4 +1,4 @@
-extends "res://scripts/State.gd"
+extends State
 
 
 # Declare member variables here. Examples:
@@ -10,58 +10,22 @@ extends "res://scripts/State.gd"
 func _ready():
 	pass # Replace with function body.
 
-func onEnter(params):
+func onEnter(_params):
 	print(owner)
 
 func onExit():
 	print("idle onExit")
 
+func custom_process(_dt:float):
+	pass
 
-func proc_input(event:InputEvent):
+func custom_unhandle_input(event:InputEvent):
+	if event.is_action_pressed("jump"):
+		emit_signal("push_state","jump")
+	if event.is_action_pressed("move"):
+		self.emit_signal("push_state","move",null)
 
-	var parent = self.get_parent()
-	if event.is_action_released("ui_left"):
-		parent.accelerate_left = false
-	if event.is_action_released("ui_right"):
-		parent.accelerate_right = false
-	if event.is_action_released("ui_up"):
-		parent.accelerate_up = false
-	if event.is_action_released("ui_down"):
-		parent.accelerate_down = false
-	if Input.is_action_pressed("ui_left"):
-		parent.accelerate_left = true
-	if Input.is_action_pressed("ui_right"):
-		parent.accelerate_right = true
-	if event.is_action_pressed("ui_up"):
-		parent.accelerate_up = true
-	if event.is_action_pressed("ui_down"):
-		parent.accelerate_down = true
+func custom_physics_process(_dt:float):
+	pass
 
 
-	#parent.speed.x = min(100,parent.speed.x)
-	#parent.speed.x = max(parent.speed.x,-100)
-		
-
-
-func update(dt:float):
-	#parent speed
-	var speed = 100
-	var parent = self.get_parent()
-	var dir = Vector2()
-	if parent.accelerate_left:
-		dir.x -=1
-	if parent.accelerate_right:
-		dir.x +=1
-	if parent.accelerate_up:
-		dir.y -=1
-	if parent.accelerate_down:
-		dir.y +=1
-	if speed:
-		owner.position += dir *speed * dt
-	
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

@@ -1,4 +1,5 @@
-extends "res://scripts/StateMachine.gd"
+#extends "res://scripts/StateMachine.gd"
+extends StateMachine
 
 
 # Declare member variables here. Examples:
@@ -14,9 +15,16 @@ var accelerate_down=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#register childState
-	self.register_state("idle",($Idle as State))
-	self.register_state("move",($Move as State))
-	self.register_state("jump",($Jump as State))
+	var idle = self.get_node("Idle")
+	var move = self.get_node("Move")
+	var jump = self.get_node("Jump")
+	print(idle,move,jump)
+	self.states["idle"] =idle
+	self.states["move"] =move
+	self.states["jump"] =jump
+	var sm = (self as StateMachine)
+	self.connectChildSignal(sm.signal_push_state,sm.method_push_state)
+	self.connectChildSignal(sm.signal_state_over,sm.method_pop_state)
 	#chose one state
 	self.change_state("idle",null)
 
