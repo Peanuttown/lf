@@ -10,19 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
-"class": "Child",
+"class": "Pseudo3D",
 "language": "GDScript",
-"path": "res://TestScene/Child.gd"
-}, {
-"base": "Node",
-"class": "Game",
-"language": "GDScript",
-"path": "res://TestScene/game.gd"
-}, {
-"base": "Node",
-"class": "Main",
-"language": "GDScript",
-"path": "res://TestScene/main.gd"
+"path": "res://scripts/Pseudo3D.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -35,9 +25,7 @@ _global_script_classes=[ {
 "path": "res://scripts/StateMachine.gd"
 } ]
 _global_script_class_icons={
-"Child": "",
-"Game": "",
-"Main": "",
+"Pseudo3D": "",
 "State": "",
 "StateMachine": ""
 }
