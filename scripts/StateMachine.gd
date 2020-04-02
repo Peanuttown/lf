@@ -14,6 +14,9 @@ var method_push_state = "push_state"
 var method_change_state = "change_state"
 var method_pop_state = "pop_state"
 
+func get_current_state():
+	return self.state_stack.back().state_name
+
 func is_empty():
 	return state_stack.size() ==0
 

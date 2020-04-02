@@ -24,7 +24,6 @@ script = ExtResource( 4 )
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
-gravity = null
 
 [node name="Position2D" type="Position2D" parent="."]
 

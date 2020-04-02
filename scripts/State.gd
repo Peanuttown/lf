@@ -25,17 +25,17 @@ func get_input_direction()->Array:
 	var direction = Vector2()
 	if Input.is_action_pressed("ui_left"):
 		move = true
-		direction
-		speed.x -= 100
+		direction.x -=1
 	if Input.is_action_pressed("ui_right"):
 		move = true
-		speed.x += 100
+		direction.x +=1
 	if Input.is_action_pressed("ui_up"):
 		move = true
-		speed.y -= 100
+		direction.y -=1
 	if Input.is_action_pressed("ui_down"):
 		move = true
-		speed.y += 100
+		direction.y +=1
+	return [move,direction]
 
 
 

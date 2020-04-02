@@ -9,7 +9,7 @@ extends Pseudo3D
 
 
 func _ready():
-	pass # Replace with function body.
+	self.speed =Vector2(100,100)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

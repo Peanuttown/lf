@@ -11,9 +11,19 @@ var speed_vertical=0;
 var speed =Vector2()
 var y = 0
 
+
+func update_speed(direction:Vector2):
+	if direction.length()!=0:
+		if direction.x > 0 :
+			if self.speed.x < 0:
+				self.speed.x =abs(self.speed.x)
+		if direction.x < 0:
+			if self.speed.x > 0:
+				self.speed.x = 0 -self.speed.x
+
 func update_pos(dt:float):
 	self.y += self.speed.y * dt
-	self.position.x += self.speed.x * dt
+	self.position.x = self.position.x + self.speed.x * dt
 	self.position.y = self.y
 	self.z = max(0,self.z + dt  * speed_vertical)
 	self.position.y -= self.z
