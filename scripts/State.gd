@@ -14,6 +14,8 @@ var signal_state_over = "state_over"
 
 var state_name;
 
+
+
 func state_over(params):
 	self.emit_signal(signal_state_over,self.state_name,params)
 
@@ -45,7 +47,7 @@ func get_input_direction()->Array:
 func _ready():
 	pass # Replace with function body.
 
-func onEnter(_params:Array)->void:
+func onEnter(_params)->void:
 	pass
 
 func onExit()->void:

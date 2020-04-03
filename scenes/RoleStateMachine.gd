@@ -18,10 +18,11 @@ func _ready():
 	var idle = self.get_node("Idle")
 	var move = self.get_node("Move")
 	var jump = self.get_node("Jump")
-	print(idle,move,jump)
+	var run= self.get_node("Run")
 	self.states["idle"] =idle
 	self.states["move"] =move
 	self.states["jump"] =jump
+	self.states["run"] =run
 	var sm = (self as StateMachine)
 	self.connectChildSignal(sm.signal_push_state,sm.method_push_state)
 	self.connectChildSignal(sm.signal_state_over,sm.method_pop_state)

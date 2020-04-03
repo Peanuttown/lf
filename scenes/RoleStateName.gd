@@ -11,7 +11,6 @@ var states = []
 func _ready():
 	var sm : StateMachine= $"../../StateMachine"
 	var states = sm.get_all_state()
-	print("here")
 	for stateKey in states:
 		var state : State= states[stateKey]
 		assert(state)

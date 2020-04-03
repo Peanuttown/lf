@@ -7,23 +7,16 @@ class_name Pseudo3D
 # var b = "text"
 
 var z =0;
-var speed_vertical=0;
-var speed =Vector2()
+var speed_vertical=0 ;
+var speed_x_scalar =0 ;
+var speed_y_scalar =0 ;
 var y = 0
 
 
-func update_speed(direction:Vector2):
-	if direction.length()!=0:
-		if direction.x > 0 :
-			if self.speed.x < 0:
-				self.speed.x =abs(self.speed.x)
-		if direction.x < 0:
-			if self.speed.x > 0:
-				self.speed.x = 0 -self.speed.x
 
-func update_pos(dt:float):
-	self.y += self.speed.y * dt
-	self.position.x = self.position.x + self.speed.x * dt
+func update_pos(dt:float,direction:Vector2):
+	self.y += self.speed_y_scalar*direction.y * dt
+	self.position.x = self.position.x + self.speed_x_scalar *direction.x* dt
 	self.position.y = self.y
 	self.z = max(0,self.z + dt  * speed_vertical)
 	self.position.y -= self.z

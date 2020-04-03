@@ -12,7 +12,6 @@ func _ready():
 
 func onEnter(_params):
 	owner.speed_vertical=600
-	owner.speed = Vector2(100,100)
 
 func onExit():
 	pass
@@ -23,10 +22,8 @@ func custom_process(dt:float)->void:
 func custom_physics_process(dt:float)->void:
 	var direction =self.get_input_direction()[1]
 	owner.speed_vertical -= dt * self.gravity
-	owner.speed = Vector2(100,100)
-	owner.speed *= direction
 
-	owner.update_pos(dt)
+	owner.update_pos(dt,direction)
 	if owner.on_ground():
 		self.state_over(null)
 
