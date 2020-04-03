@@ -60,6 +60,7 @@ func _physics_process(delta):
 
 func pop_state(_state:String,_params):
 	self.state_stack.pop_back().onExit()
+	self.state_stack.back().onStateResume()
 
 
 

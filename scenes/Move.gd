@@ -1,4 +1,4 @@
-extends State
+extends RoleStateBase
 
 var owner_:Node2D
 

@@ -1,4 +1,4 @@
-extends State
+extends RoleStateBase
 
 
 # Declare member variables here. Examples:

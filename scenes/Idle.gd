@@ -1,4 +1,4 @@
-extends State
+extends RoleStateBase
 
 
 # Declare member variables here. Examples:
@@ -12,8 +12,14 @@ func _ready():
 	self.state_name ="idle"
 	pass # Replace with function body.
 
+func setOriginSpriteFrame():
+	self.set_sprite_frame(0)
+
 func onEnter(_params):
-	print(owner)
+	self.setOriginSpriteFrame()
+
+func onStateResume():
+	self.setOriginSpriteFrame()
 
 func onExit():
 	print("idle onExit")
@@ -35,6 +41,8 @@ func custom_unhandle_input(event:InputEvent):
 
 func custom_physics_process(_dt:float):
 	pass
+
+
 
 
 
