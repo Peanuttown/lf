@@ -10,16 +10,10 @@ var frame_window_len=3
 var frame_change_dt = 200#毫秒
 
 
-func set_sprite_frame(frame:int):
-	self.get_sprite().frame = frame
-
-func get_sprite()->Sprite:
-	return owner.get_node("Sprite") as Sprite
 
 
 func onEnter(_params)->void:
 	self.set_sprite_frame(self.frame_offset)
-
 
 func onExit()->void:
 	print("run exit")
@@ -34,10 +28,10 @@ func custom_process(dt:float)->void:
 	self.set_sprite_frame(self.frame_offset + frame_index)
 
 func custom_physics_process(dt:float)->void:
-	pass
+	self.update_x_axis_pos(dt,200,200)
 
 func custom_unhandle_input(event:InputEvent)->void:
-	if event.is_action_released("move"):
+	if event.is_action_released("move") && !self.input_has_move():
 		self.state_over(null)
 
 

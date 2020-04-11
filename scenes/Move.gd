@@ -3,8 +3,7 @@ extends RoleStateBase
 var owner_:Node2D
 
 func onEnter(_params):
-	owner.speed_x_scalar = 100
-	owner.speed_y_scalar = 100
+	pass
 
 func onExit():
 	owner.speed_x_scalar = 0
@@ -27,11 +26,12 @@ func custom_unhandle_input(event:InputEvent):
 		print("move get move")
 
 func custom_physics_process(dt:float):
-	var directions =self.get_input_direction()
-	var move = directions[0]
-	var direction =directions[1]
-	if direction.length() == 0 && !move :
-		emit_signal("state_over","move",null)
-	else:
-		 owner.update_pos(dt,direction)
+	self.update_x_axis_pos(dt,100,100)
+	#var directions =self.get_input_direction()
+	#var move = directions[0]
+	#var direction =directions[1]
+	#if direction.length() == 0 && !move :
+	#	emit_signal("state_over","move",null)
+	#else:
+	#	 owner.update_pos(dt,direction)
 	
