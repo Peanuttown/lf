@@ -5,6 +5,7 @@ class_name Combo
 var actions = []
 
 signal combo_over
+var sig_nm_combo_over ="combo_over"
 var sig_combo_over_switch=false
 
 func register_actions(actions)->void:
@@ -19,6 +20,7 @@ func push_action(action:Action)->void:
 	if !self.has_action():
 		self.sig_combo_over_switch = false
 	self.actions.push_back(action)
+	(action as Action).connect_action_over(self,"handle_action_over")
 
 func has_action()->bool:
 	return self.actions.size()>0
@@ -26,17 +28,17 @@ func has_action()->bool:
 func combo_end()->void:
 	if !self.sig_combo_over_switch:
 		self.sig_combo_over_switch = !self.sig_combo_over_switch
-		emit_signal("combo_over")
+		emit_signal(sig_nm_combo_over)
 
-func action(dt):
+func action(sprite,dt):
 	if !self.has_action():
 		self.combo_end()
 		return
-	self.actions.front().action(dt)
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+	self.actions.front().action(sprite,dt)
 
+func connect_combo_over(target,method)->void:
+	assert(target.has_method(method))
+	self.connect(sig_nm_combo_over,target,method)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

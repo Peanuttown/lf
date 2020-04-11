@@ -3,7 +3,7 @@ extends Node2D
 class ActionA extends Action:
 	func _init(interval,max_frame).(interval,max_frame):
 		pass
-	func play_frame(frame_index_relative:int)->void:
+	func play_frame(sprite,frame_index_relative:int)->void:
 		print("action:%d" % frame_index_relative)
 
 
@@ -23,5 +23,5 @@ func _ready():
 	self.comboMgr.push_action(actionA)
 
 func _process(dt):
-	self.comboMgr.action(dt)
+	self.comboMgr.action(null,dt)
 

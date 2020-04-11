@@ -15,12 +15,12 @@ func _init( action_interval:int, frame_max_relative_index:int):
 	self.action_interval = action_interval
 	self.frame_max_relative_index = frame_max_relative_index
 
-func play_frame(frame_index_relative:int)->void:
+func play_frame(sprite:Sprite,frame_index_relative:int)->void:
 	pass
 
-func startAction():
+func startAction(sprite:Sprite):
 	print("start Action")
-	self.play_frame(0)
+	self.play_frame(sprite,0)
 	self.action_time_acc +=0.001
 
 func first_action()->bool:
@@ -38,17 +38,17 @@ func may_be_action_over()->void:
 		self.action_over()
 
 
-func continueAction(dt:float)->void:
+func continueAction(sprite:Sprite,dt:float)->void:
 	self.action_time_acc +=dt
 	var frame_index_relative = self.action_time_acc / self.action_interval
-	self.play_frame(min(frame_index_relative,self.frame_max_relative_index))
+	self.play_frame(sprite,min(frame_index_relative,self.frame_max_relative_index))
 	self.may_be_action_over()
 
-func action(dt:float):
+func action(sprite,dt:float):
 	if first_action():
-		self.startAction()
+		self.startAction(sprite)
 	else:
-		self.continueAction(dt)
+		self.continueAction(sprite,dt)
 
 
 func connect_action_over(target,method)->void:
