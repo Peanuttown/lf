@@ -53,6 +53,10 @@ func onEnter(_params)->void:
 func onExit()->void:
 	pass
 
+#called on the state's upper state pop
+func onStateResume(args)->void:
+	pass
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

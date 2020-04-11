@@ -14,6 +14,17 @@ var method_push_state = "push_state"
 var method_change_state = "change_state"
 var method_pop_state = "pop_state"
 
+func _ready():
+	#get all child which is class of state
+	var childs  = self.get_children()
+	for child in childs:
+		if child is State:
+			#check state name
+			assert(child.state_name != "" && child.state_name != null,child.name+" not set state name,set the name in the node's _ready function")
+			self.states[child.state_name] = child
+	self.connectChildSignal(self.signal_push_state,self.method_push_state)
+	self.connectChildSignal(self.signal_state_over,self.method_pop_state)
+
 func get_current_state():
 	return self.state_stack.back().state_name
 
@@ -33,13 +44,13 @@ func change_state(sName:String,params)->void:
 	var state:State = self.states[sName];
 	if !self.is_empty():
 		self.state_stack.pop_back().onExit()
-	state.onEnter(params);
 	self.state_stack.push_back(state)
+	state.onEnter(params);
 
 func push_state(sName:String,params)->void:
 	var state:State = self.states[sName]
-	state.onEnter(params)
 	self.state_stack.push_back(state);
+	state.onEnter(params)
 
 func _unhandled_input(event):
 	var state = self.state_stack.back()
@@ -60,7 +71,7 @@ func _physics_process(delta):
 
 func pop_state(_state:String,_params):
 	self.state_stack.pop_back().onExit()
-	self.state_stack.back().onStateResume()
+	self.state_stack.back().onStateResume(null)
 
 
 

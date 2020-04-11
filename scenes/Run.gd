@@ -16,7 +16,7 @@ func onEnter(_params)->void:
 	self.set_sprite_frame(self.frame_offset)
 
 func onExit()->void:
-	print("run exit")
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

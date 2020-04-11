@@ -18,7 +18,7 @@ func setOriginSpriteFrame():
 func onEnter(_params):
 	self.setOriginSpriteFrame()
 
-func onStateResume():
+func onStateResume(args):
 	self.setOriginSpriteFrame()
 
 func onExit():
@@ -38,6 +38,9 @@ func custom_unhandle_input(event:InputEvent):
 		else:
 			self.push_state("move",null)
 		lastMoveTime = t
+	if event.is_action_pressed("attack"):
+		self.push_state("attack",null)
+
 
 func custom_physics_process(_dt:float):
 	pass

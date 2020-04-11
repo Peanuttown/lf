@@ -15,17 +15,14 @@ var accelerate_down=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#register childState
-	var idle = self.get_node("Idle")
-	var move = self.get_node("Move")
-	var jump = self.get_node("Jump")
-	var run= self.get_node("Run")
-	self.states["idle"] =idle
-	self.states["move"] =move
-	self.states["jump"] =jump
-	self.states["run"] =run
-	var sm = (self as StateMachine)
-	self.connectChildSignal(sm.signal_push_state,sm.method_push_state)
-	self.connectChildSignal(sm.signal_state_over,sm.method_pop_state)
+	#var idle = self.get_node("Idle")
+	#var move = self.get_node("Move")
+	#var jump = self.get_node("Jump")
+	#var run= self.get_node("Run")
+	#self.states["idle"] =idle
+	#self.states["move"] =move
+	#self.states["jump"] =jump
+	#self.states["run"] =run
 	#chose one state
 	self.push_state("idle",null)
 
