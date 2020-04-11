@@ -30,6 +30,8 @@ func _unhandled_input(event):
 func _ready():
 	pass
 
+func get_body_sprite()->Sprite:
+	return self.get_node("Sprite") as Sprite
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
