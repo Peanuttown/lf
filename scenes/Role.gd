@@ -23,9 +23,11 @@ func handle_face_direct_change(event:InputEvent):
 		self.get_node("Sprite").flip_h = !self.face_direct_right
 
 
+func handle_input_common(event:InputEvent)->void:
+	self.handle_face_direct_change(event)
 
 func _unhandled_input(event):
-	self.handle_face_direct_change(event)
+	pass
 
 func _ready():
 	pass

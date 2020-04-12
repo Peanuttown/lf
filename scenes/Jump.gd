@@ -29,4 +29,5 @@ func custom_physics_process(dt:float)->void:
 
 
 func custom_unhandle_input(event:InputEvent):
+	owner.handle_input_common(event)
 	pass

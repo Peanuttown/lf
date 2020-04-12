@@ -20,6 +20,7 @@ func custom_process(_dt:float):
 	pass
 
 func custom_unhandle_input(event:InputEvent):
+	owner.handle_input_common(event)
 	if event.is_action_pressed("jump"):
 		push_state("jump",null)
 	if event.is_action_pressed("move"):

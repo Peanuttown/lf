@@ -10,7 +10,7 @@ var frame_max_relative_index = 1
 signal action_over
 var sig_nm_action_over = "action_over"
 
-func _init( action_interval:int, frame_max_relative_index:int):
+func _init( action_interval:float, frame_max_relative_index:int):
 	self.action_time_acc = 0
 	self.action_interval = action_interval
 	self.frame_max_relative_index = frame_max_relative_index
@@ -19,7 +19,6 @@ func play_frame(sprite:Sprite,frame_index_relative:int)->void:
 	pass
 
 func startAction(sprite:Sprite):
-	print("start Action")
 	self.play_frame(sprite,0)
 	self.action_time_acc +=0.001
 
