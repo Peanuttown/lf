@@ -37,6 +37,8 @@ func combo_end()->void:
 func action_incr():
 	if self.action_count ==0:
 		self.sig_combo_over_switch = false
+	if self.action_count >2:
+		return
 	self.action_count +=1
 
 func action(sprite,dt):

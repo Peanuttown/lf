@@ -75,6 +75,11 @@ func pop_state(_state:String,_params):
 
 
 
+func cs_handle_input(i,others)->void:
+	var state = self.state_stack.back()
+	if state:
+		state.cs_handle_input(i,others)
+
 
 
 
