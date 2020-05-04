@@ -4,16 +4,14 @@ using System;
 
 abstract public class StateBase //: Node
 {
-    public string stateName;
-
-    public abstract void on_enter<T>(T args);
-    public abstract void on_exit<T>(T args);
+    abstract public string getStateName();
+    public abstract void on_enter(dynamic args);
+    public abstract void on_exit(dynamic args);
     
-    public abstract void cs_physics_process(float dt);
-
-    public StateBase(string name){
-        this.stateName = name;
+    public StateBase(){
     }
 
     public abstract void handle_action(string action_name,dynamic arg);
+
+    abstract public void handle_physics_process(float dt);
 }

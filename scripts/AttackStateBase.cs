@@ -3,12 +3,12 @@ using System;
 
 public class AttackStateBase : StateBase
 {
-    static public string name="atk";
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+    public static string stateName ="atk";
+    public override string getStateName(){
+        return AttackStateBase.stateName;
+    }
     private int actionCounter;
-    public AttackStateBase():base(AttackStateBase.name){
+    public AttackStateBase():base(){
 
     }
 
@@ -18,20 +18,24 @@ public class AttackStateBase : StateBase
         Console.WriteLine("attack");
     }
 
-    public override void on_enter<T>(T args)
+    public override void on_enter(dynamic args)
     {
         Console.WriteLine("attack enter");
     }
 
-    public override void on_exit<T>(T args)
+    public override void on_exit(dynamic args)
     {
         Console.WriteLine("attack exit");
     }
 
     public override void handle_action(string action_name, dynamic arg){
-        if (action_name == AttackStateBase.name){
+        if (action_name == this.getStateName()){
             this.Attack();
         }
+    }
+
+    public override void handle_physics_process(float dt){
+        //todo
     }
 
 

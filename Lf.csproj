@@ -51,14 +51,25 @@
       <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="scenes\Player\Player.cs" />
     <Compile Include="scenes\RoleBase\Role.cs" />
     <Compile Include="scenes\RoleBase\RoleBase.cs" />
+    <Compile Include="scenes\RoleBase\RoleCtrlByUser.cs" />
+    <Compile Include="scenes\RoleNeglected\RoleNeglected.cs" />
+    <Compile Include="scenes\RoleNeglected\RoleNeglectedIdle.cs" />
+    <Compile Include="scenes\RoleNeglected\RoleNeglectedMoveState.cs" />
+    <Compile Include="scenes\RoleNeglected\RoleNeglectedJump.cs" />
+    <Compile Include="scenes\RoleNeglected\RoleNeglectedAttack.cs" />
     <Compile Include="scenes\TestScene\MonoTest\MonoTest.cs" />
     <Compile Include="scripts\AttackStateBase.cs" />
     <Compile Include="scripts\comboMgr.cs" />
+    <Compile Include="scripts\IdleStateBase.cs" />
+    <Compile Include="scripts\JumpStateBase.cs" />
+    <Compile Include="scripts\MoveStateBase.cs" />
     <Compile Include="scripts\StateBase.cs" />
     <Compile Include="tzzMath.cs" />
     <Compile Include="scripts\FSM.cs" />

@@ -5,11 +5,11 @@ using System;
 namespace StateMachine{
     public class FSM {
         private Dictionary<string,StateBase> States;
-        private List<StateBase> state_stack;
+        private Stack<StateBase> state_stack;
         public FSM()
         {
             this.States = new Dictionary<string, StateBase>();
-            this.state_stack = new List<StateBase>();
+            this.state_stack = new Stack<StateBase>();
         }
         public void register_state(string name,StateBase state)
         {
@@ -19,18 +19,18 @@ namespace StateMachine{
             this.States.Add(name,state);
         }
 
-        public void push_state<T>(string name,T arg){
+        public void push_state(string name,dynamic args){
             StateBase state = this.States[name];
             if (state == null){
                 throw new Exception(String.Format("state [{0}] undefined",name));
             }
-            state.on_enter(arg);
-            this.state_stack.Add(state);
+            state.on_enter(args);
+            this.state_stack.Push(state);
         }
 
         public void pop_state<T>(){
             if (this.state_stack.Count >0){
-                this.state_stack.RemoveAt(-1);
+                this.state_stack.Pop();
             }
         }
 
@@ -40,14 +40,14 @@ namespace StateMachine{
 
         public StateBase cur_state(){
             if (this.stating()){
-                return this.state_stack[-1];
+                return this.state_stack.Peek();
             }
             return null;
         }
 
         public string curStateName(){
             if (this.stating()){
-                return this.state_stack[-1].stateName;
+                return this.state_stack.Peek().getStateName();
             }else{
                 return  "";
             }
@@ -60,10 +60,10 @@ namespace StateMachine{
             }
         }
 
-        public void cs_physics_process(float dt){
+        public void handle_physics_process(float dt){
             StateBase curState = this.cur_state();
             if (curState!=null){
-                curState.cs_physics_process(dt);
+                curState.handle_physics_process(dt);
             }
         }
     }
