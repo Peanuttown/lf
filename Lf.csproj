@@ -64,6 +64,7 @@
     <Compile Include="scenes\RoleNeglected\RoleNeglectedMoveState.cs" />
     <Compile Include="scenes\RoleNeglected\RoleNeglectedJump.cs" />
     <Compile Include="scenes\RoleNeglected\RoleNeglectedAttack.cs" />
+    <Compile Include="scenes\RoleNeglected\RoleNeglectedAction.cs" />
     <Compile Include="scenes\TestScene\MonoTest\MonoTest.cs" />
     <Compile Include="scripts\AttackStateBase.cs" />
     <Compile Include="scripts\comboMgr.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="scripts\StateBase.cs" />
     <Compile Include="tzzMath.cs" />
     <Compile Include="scripts\FSM.cs" />
+    <Compile Include="scripts\common\input.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

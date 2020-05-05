@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Diagnostics;
+using tzzGodot;
 
 public class Player : Node2D
 {
@@ -13,6 +15,16 @@ public class Player : Node2D
     {
         this.role = new RoleNeglected();
         this.AddChild(this.role);
+    }
+
+    public override void _UnhandledInput(InputEvent @event){
+        if (tzzGodot.Input.IsAttack(@event)){
+            this.role.Attack();
+        }else if(tzzGodot.Input.IsJump(@event)){
+            this.role.Jump();
+        }else if (tzzGodot.Input.IsMove(@event)){
+            this.role.Move();
+        }
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.

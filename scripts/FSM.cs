@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Collections;
+using System.Diagnostics;
 using System;
 
 namespace StateMachine{
-    public class FSM {
+    public class FSM :Godot.Object{
         private Dictionary<string,StateBase> States;
         private Stack<StateBase> state_stack;
         public FSM()
@@ -16,6 +17,7 @@ namespace StateMachine{
             if (this.States.ContainsKey(name)){
                 throw new Exception(String.Format("state repeated : [{0}]",name));
             }
+            state.connect_state_over(this,nameof(this.pop_state));
             this.States.Add(name,state);
         }
 
@@ -28,7 +30,8 @@ namespace StateMachine{
             this.state_stack.Push(state);
         }
 
-        public void pop_state<T>(){
+        public void pop_state(){
+             Debug.WriteLine("pop state");
             if (this.state_stack.Count >0){
                 this.state_stack.Pop();
             }

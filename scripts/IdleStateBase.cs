@@ -4,8 +4,9 @@ using System.Diagnostics;
 
 public class IdleStateBase : StateBase
 {
+    public const string stateName ="idle";
     public override string getStateName(){
-        return "idle";
+        return IdleStateBase.stateName;
     }
     public IdleStateBase():base(){
         //todo

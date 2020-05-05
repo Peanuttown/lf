@@ -4,8 +4,9 @@ using System;
 public class MoveStateBase : StateBase
 {
     // Declare member variables here. Examples:
+    public const string stateName = "move";
     public override string getStateName(){
-        return "move";
+        return MoveStateBase.stateName;
     }
      public MoveStateBase():base(){
         //todo

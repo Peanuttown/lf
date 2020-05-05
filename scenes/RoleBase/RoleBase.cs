@@ -55,14 +55,40 @@ abstract public class  RoleBase : Node2D
         return this.curStateName()==AttackStateBase.stateName;
     }
 
+    private bool is_idle(){
+        return this.curStateName() == IdleStateBase.stateName;
+    }
+
+    private bool is_moving(){
+        return this.curStateName() == MoveStateBase.stateName;
+    }
+
+    private bool is_jumping(){
+        return this.curStateName() == JumpStateBase.stateName;
+    }
+
 
     public void Attack(){
-        if (this.is_attacking()){
-            this.fSM.handle_action(AttackStateBase.stateName,null);
-            return ;
+        if (this.is_idle()){
+            this.fSM.push_state(AttackStateBase.stateName,null);
+            return;
         }
-        this.fSM.push_state(AttackStateBase.stateName,null);
+        this.fSM.cur_state().handle_action(AttackStateBase.stateName,null);
     }
+
+    public void Jump(){
+        if (this.is_idle()){
+            this.fSM.push_state(JumpStateBase.stateName,null);
+        }
+    }
+
+    public void Move(){
+        if (this.is_idle()){
+            this.fSM.push_state(MoveStateBase.stateName,null);
+        }
+    }
+
+
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)

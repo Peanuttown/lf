@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public abstract  class Action:Godot.GDScript{
     private float duration;
@@ -17,6 +18,7 @@ public abstract  class Action:Godot.GDScript{
     }
 
     public bool Do(float dt){//return weather the action over
+        Debug.WriteLine(this.elapseTimeCounter);
         if (this.elapseTimeCounter==0){
             this.playAnimation();
             this.elapseTimeCounter +=dt;
@@ -24,6 +26,7 @@ public abstract  class Action:Godot.GDScript{
         }else{
             this.elapseTimeCounter +=dt;
             if (this.duration < this.elapseTimeCounter){
+                Debug.WriteLine("here");
                 this.clean();
                 return true;
             }
@@ -53,13 +56,23 @@ public class ComboMgr:GDScript
         this.pendingAction = (this.pendingAction+1>this.maxPendingAction?this.pendingAction:this.pendingAction+1);
     }
     private void combo_over(){
+        Debug.WriteLine("combog mgr emit sig");
         this.comboIndex =0;
         this.EmitSignal(nameof(SigComboOver));
+    }
+    public void connectComboOver(Godot.Object target,string method){
+        this.Connect(
+            nameof(SigComboOver),
+            target,
+            method
+        );
+
     }
     public void Update(float dt){
         if (this.comboing()){
             bool actionOver =  this.actions[this.comboIndex].Do(dt);
             if (actionOver){
+                Trace.WriteLine("action over");
                 this.pendingAction --;
                 if (this.pendingAction==0){
                     this.combo_over();

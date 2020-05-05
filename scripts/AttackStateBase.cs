@@ -1,26 +1,39 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public class AttackStateBase : StateBase
 {
-    public static string stateName ="atk";
+    private ComboMgr comboMgr;
+    public const string stateName ="atk";
     public override string getStateName(){
         return AttackStateBase.stateName;
     }
     private int actionCounter;
-    public AttackStateBase():base(){
-
+    public AttackStateBase(ComboMgr combos):base(){
+        this.comboMgr = combos;
+        this.comboMgr.connectComboOver(this,nameof(this.onComboOver));
+    }
+    public void onComboOver(){
+        Debug.WriteLine("attack state base on comboOver");
+        this.state_over();
+        Debug.WriteLine("over");
     }
 
     // Called when the node enters the scene tree for the first time.
     private void Attack()
     {
-        Console.WriteLine("attack");
+        this.comboMgr.Combo();
+    }
+
+    private void attackCounterIncr(){
+        this.actionCounter++;
     }
 
     public override void on_enter(dynamic args)
     {
         Console.WriteLine("attack enter");
+        this.Attack();
     }
 
     public override void on_exit(dynamic args)
@@ -36,6 +49,7 @@ public class AttackStateBase : StateBase
 
     public override void handle_physics_process(float dt){
         //todo
+        this.comboMgr.Update(dt);
     }
 
 

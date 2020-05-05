@@ -3,9 +3,11 @@ using System;
 
 public class JumpStateBase : StateBase
 {
+
+    public const string stateName = "jump";
     // Declare member variables here. Examples:
     public override string getStateName(){
-        return "jump";
+        return JumpStateBase.stateName;
     }
      public JumpStateBase():base(){
         //todo
