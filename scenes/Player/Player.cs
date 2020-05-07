@@ -23,7 +23,17 @@ public class Player : Node2D
         }else if(tzzGodot.Input.IsJump(@event)){
             this.role.Jump();
         }else if (tzzGodot.Input.IsMove(@event)){
-            this.role.Move();
+            this.role.Move(tzzGodot.Input.getInputDirection(@event));
+        }
+    }
+
+    public override void _PhysicsProcess(float delta){
+        if (tzzGodot.Input.IsPressedAttack()){
+            this.role.Attack();
+        }else if(tzzGodot.Input.IsPressedJump()){
+            this.role.Jump();
+        }else if(tzzGodot.Input.IsPressedMove()){
+            this.role.Move(tzzGodot.Input.getInputDirection());
         }
     }
 

@@ -51,11 +51,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Lf"
+run/main_scene="res://scenes/Player/Player.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-game="*res://TestScene/game.gd"
+Global="*res://scenes/Global.tscn"
 
 [debug]
 

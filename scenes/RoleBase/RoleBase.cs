@@ -87,10 +87,12 @@ abstract public class  RoleBase : Node2D
         }
     }
 
-    public void Move(){
+    public void Move(Vector2 direction){
         if (this.is_idle()){
-            this.fSM.push_state(MoveStateBase.stateName,null);
+            this.fSM.push_state(MoveStateBase.stateName,direction);
+            return;
         }
+        this.fSM.handle_action(MoveStateBase.stateName,direction);
     }
 
 

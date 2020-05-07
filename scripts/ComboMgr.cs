@@ -4,12 +4,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 public abstract  class Action:Godot.GDScript{
+    private List<Action> subActions;
+    private  int subActionIdx;
     private float duration;
     private float elapseTimeCounter;
 
     private tzzGodot.Animator animator;
 
-    public abstract void showAction(float elapseTime,tzzGodot.Animator animator);
+    protected void showSubAction(float dt,float elapseTime,tzzGodot.Animator animator){
+        //need sub action elasped time
+        if (this.subActions[this.subActionIdx].Do(dt,animator)){
+            //this.subActionIdx
+        }
+    }
+
+    public abstract void showAction(float dt,float elapseTime,tzzGodot.Animator animator);
 
     public void setAnimator(tzzGodot.Animator animator){
         this.animator = animator;
@@ -23,9 +32,9 @@ public abstract  class Action:Godot.GDScript{
         this.elapseTimeCounter = 0;
     }
 
-    public bool Do(float dt,RoleBase selfRole){//return weather the action over
+    public bool Do(float dt,tzzGodot.Animator animator){//return weather the action over
         if (this.elapseTimeCounter==0){
-            this.showAction(this.elapseTimeCounter,selfRole.getAnimator());
+            this.showAction(dt,this.elapseTimeCounter,animator);
             this.elapseTimeCounter +=dt;
             return false;
         }else{
@@ -34,7 +43,7 @@ public abstract  class Action:Godot.GDScript{
                 this.clean();
                 return true;
             }
-            this.showAction(this.elapseTimeCounter,selfRole.getAnimator());
+            this.showAction(dt,this.elapseTimeCounter,animator);
             return false;
         }
     }
@@ -75,7 +84,7 @@ public class ComboMgr:GDScript
     }
     public void Update(float dt){
         if (this.comboing()){
-            bool actionOver =  this.actions[this.comboIndex].Do(dt,this.selfRole);
+            bool actionOver =  this.actions[this.comboIndex].Do(dt,this.selfRole.getAnimator());
             if (actionOver){
                 Trace.WriteLine("action over");
                 this.pendingAction --;

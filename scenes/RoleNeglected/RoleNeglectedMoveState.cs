@@ -1,5 +1,5 @@
 public class RoleNeglectedMoveState:MoveStateBase
 {
-    public RoleNeglectedMoveState():base(){}
+    public RoleNeglectedMoveState(tzzGodot.Owner owner):base(owner){}
 
 }

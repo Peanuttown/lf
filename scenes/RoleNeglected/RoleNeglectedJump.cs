@@ -1,5 +1,5 @@
 public class RoleNeglectedJumpState : JumpStateBase
 {
-    public RoleNeglectedJumpState():base(){}
+    public RoleNeglectedJumpState(tzzGodot.Owner owner):base(owner){}
 
 } 

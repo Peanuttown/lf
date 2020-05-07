@@ -9,7 +9,7 @@ public class JumpStateBase : StateBase
     public override string getStateName(){
         return JumpStateBase.stateName;
     }
-     public JumpStateBase():base(){
+     public JumpStateBase(tzzGodot.Owner owner):base(owner){
         //todo
     }
     public override void on_enter(dynamic args){

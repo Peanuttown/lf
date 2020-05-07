@@ -5,16 +5,18 @@ using System.Diagnostics;
 
 abstract public class StateBase :Godot.Object//: Node
 {
+    protected tzzGodot.Owner  owner;
     [Signal]
     public delegate void SigStateOver(params object[] args);
     abstract public string getStateName();
     public abstract void on_enter(dynamic args);
     public abstract void on_exit(dynamic args);
     
-    public StateBase(){
+    public StateBase(tzzGodot.Owner owner){
+        this.owner = owner;
     }
 
-    public abstract void handle_action(string action_name,dynamic arg);
+    public abstract void handle_action(string action_name,object arg);
 
     abstract public void handle_physics_process(float dt);
 

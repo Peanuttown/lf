@@ -21,7 +21,7 @@ namespace StateMachine{
             this.States.Add(name,state);
         }
 
-        public void push_state(string name,dynamic args){
+        public void push_state(string name,object args){
             StateBase state = this.States[name];
             if (state == null){
                 throw new Exception(String.Format("state [{0}] undefined",name));

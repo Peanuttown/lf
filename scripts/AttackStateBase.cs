@@ -10,7 +10,7 @@ public class AttackStateBase : StateBase
         return AttackStateBase.stateName;
     }
     private int actionCounter;
-    public AttackStateBase(ComboMgr combos):base(){
+    public AttackStateBase(tzzGodot.Owner owner,ComboMgr combos):base(owner){
         this.comboMgr = combos;
         this.comboMgr.connectComboOver(this,nameof(this.onComboOver));
     }
@@ -39,7 +39,7 @@ public class AttackStateBase : StateBase
         Console.WriteLine("attack exit");
     }
 
-    public override void handle_action(string action_name, dynamic arg){
+    public override void handle_action(string action_name, object arg){
         if (action_name == this.getStateName()){
             this.Attack();
         }

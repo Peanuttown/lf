@@ -8,7 +8,7 @@ public class IdleStateBase : StateBase
     public override string getStateName(){
         return IdleStateBase.stateName;
     }
-    public IdleStateBase():base(){
+    public IdleStateBase(tzzGodot.Owner owner):base(owner){
         //todo
     }
     public override void on_enter(dynamic args){

@@ -8,22 +8,29 @@ public class MoveStateBase : StateBase
     public override string getStateName(){
         return MoveStateBase.stateName;
     }
-     public MoveStateBase():base(){
+     public MoveStateBase(tzzGodot.Owner owner):base(owner){
         //todo
     }
-    public override void on_enter(dynamic args){
+    public override void on_enter(object args){
+        this.handle_action(MoveStateBase.stateName,args);
+    }
+
+    public override void on_exit(object args){
         //todo
     }
 
-    public override void on_exit(dynamic args){
-        //todo
-    }
-
-    public override void handle_action(string action_name, dynamic arg){
-        //todo
+    public override void handle_action(string action_name, object arg){
+        if (action_name == MoveStateBase.stateName){
+            Godot.Vector2 direction = (Godot.Vector2)(arg);
+            this.owner.OwnerMove(direction);
+        }
     }
 
     public override void handle_physics_process(float dt){
-
-    }   // private int a = 2;
+        //move input pressd?
+        if (!tzzGodot.Input.IsPressedMove()){
+            Console.WriteLine("move state over");
+            this.state_over();
+        }
+    }   
 }
