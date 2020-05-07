@@ -28,13 +28,14 @@ namespace StateMachine{
             }
             state.on_enter(args);
             this.state_stack.Push(state);
+            Debug.WriteLine(String.Format("cur state {0}",this.cur_state().getStateName()));
         }
 
         public void pop_state(){
-             Debug.WriteLine("pop state");
             if (this.state_stack.Count >0){
                 this.state_stack.Pop();
             }
+            Debug.WriteLine(String.Format("cur state {0}",this.cur_state().getStateName()));
         }
 
         private bool stating(){

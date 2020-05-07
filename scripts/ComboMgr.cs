@@ -18,7 +18,6 @@ public abstract  class Action:Godot.GDScript{
     }
 
     public bool Do(float dt){//return weather the action over
-        Debug.WriteLine(this.elapseTimeCounter);
         if (this.elapseTimeCounter==0){
             this.playAnimation();
             this.elapseTimeCounter +=dt;
@@ -26,7 +25,6 @@ public abstract  class Action:Godot.GDScript{
         }else{
             this.elapseTimeCounter +=dt;
             if (this.duration < this.elapseTimeCounter){
-                Debug.WriteLine("here");
                 this.clean();
                 return true;
             }
@@ -56,7 +54,6 @@ public class ComboMgr:GDScript
         this.pendingAction = (this.pendingAction+1>this.maxPendingAction?this.pendingAction:this.pendingAction+1);
     }
     private void combo_over(){
-        Debug.WriteLine("combog mgr emit sig");
         this.comboIndex =0;
         this.EmitSignal(nameof(SigComboOver));
     }

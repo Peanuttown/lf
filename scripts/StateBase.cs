@@ -19,11 +19,9 @@ abstract public class StateBase :Godot.Object//: Node
     abstract public void handle_physics_process(float dt);
 
     public void state_over(params object[] arg){
-        Debug.WriteLine("emit state over");
         EmitSignal(nameof(SigStateOver),arg);
     }
     public void connect_state_over(Godot.Object target,string method ){
-        Debug.WriteLine("connect state over");
         this.Connect(nameof(SigStateOver),target,method);
     }
 }

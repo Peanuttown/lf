@@ -15,9 +15,7 @@ public class AttackStateBase : StateBase
         this.comboMgr.connectComboOver(this,nameof(this.onComboOver));
     }
     public void onComboOver(){
-        Debug.WriteLine("attack state base on comboOver");
         this.state_over();
-        Debug.WriteLine("over");
     }
 
     // Called when the node enters the scene tree for the first time.
