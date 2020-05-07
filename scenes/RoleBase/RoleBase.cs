@@ -6,14 +6,19 @@ using System.Collections.Generic;
 
 abstract public class  RoleBase : Node2D
 {
+    private tzzGodot.Animator animator;
     public static int IdleStateIdx = 0;
     public static int MoveStateIdx  =1;
     public static int JumpStateIdex= 2;
     public static int AttackStateIdx= 3;
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-    //states order : idle,atk,jump
+
+    public void setAnimator(tzzGodot.Animator animator){
+        this.animator = animator;
+    }
+
+    public tzzGodot.Animator getAnimator(){
+        return this.animator;
+    }
     public void RegisterState(List<StateBase> states){
         if (states.Count<4){
             throw new Exception(String.Format("role min need 3 state,but give %d\n",states.Count));

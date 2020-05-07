@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TestScene/rigid.gd" type="Script" id=1]
-[ext_resource path="res://sprites/bandit_0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/role_neglected.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 24.3841

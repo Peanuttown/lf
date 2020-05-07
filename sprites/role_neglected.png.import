@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bandit_0.png-77608d720dff0d946adabb6851de3862.stex"
+path="res://.import/role_neglected.png-5fac8d26efbb549d52ded8ac1cd2d349.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/bandit_0.png"
-dest_files=[ "res://.import/bandit_0.png-77608d720dff0d946adabb6851de3862.stex" ]
+source_file="res://sprites/role_neglected.png"
+dest_files=[ "res://.import/role_neglected.png-5fac8d26efbb549d52ded8ac1cd2d349.stex" ]
 
 [params]
 
