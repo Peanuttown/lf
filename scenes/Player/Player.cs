@@ -16,23 +16,26 @@ public class Player : Node2D
         this.role = new RoleNeglected();
         this.AddChild(this.role);
     }
-
-    public override void _UnhandledInput(InputEvent @event){
-        if (tzzGodot.Input.IsAttack(@event)){
+    public override void _UnhandledKeyInput(InputEventKey @event){
+        if (tzzGodot.Input.IsAttack(@event))
+        {
+            Console.WriteLine("unhandle" + ((Godot.InputEventKey)@event).Scancode);
             this.role.Attack();
-        }else if(tzzGodot.Input.IsJump(@event)){
+        }
+        else if (tzzGodot.Input.IsJump(@event))
+        {
             this.role.Jump();
-        }else if (tzzGodot.Input.IsMove(@event)){
+        }
+        else if (tzzGodot.Input.IsMove(@event))
+        {
             this.role.Move(tzzGodot.Input.getInputDirection(@event));
         }
+        GetTree().SetInputAsHandled();
     }
 
+
     public override void _PhysicsProcess(float delta){
-        if (tzzGodot.Input.IsPressedAttack()){
-            this.role.Attack();
-        }else if(tzzGodot.Input.IsPressedJump()){
-            this.role.Jump();
-        }else if(tzzGodot.Input.IsPressedMove()){
+        if (tzzGodot.Input.IsPressedMove()){
             this.role.Move(tzzGodot.Input.getInputDirection());
         }
     }

@@ -9,7 +9,7 @@ namespace tzzGodot{
         public static string InputDefRight = "ui_right";
 
         public static bool IsAttack(Godot.InputEvent @event){
-            return @event.IsAction(Input.InputDefAttack);
+            return Godot.Input.IsActionJustPressed(Input.InputDefAttack);
         }
         public static bool IsJump(Godot.InputEvent @event){
             return @event.IsAction(Input.InputDefJump);
@@ -24,7 +24,11 @@ namespace tzzGodot{
             return Godot.Input.IsKeyPressed((int)(key));
         }
         public static bool IsPressedMove(){
-            return Input.IsPressed(InputDefMove);
+            return Input.IsPressed(InputDefMove) |
+             Input.IsPressed(InputDefLeft) |
+             Input.IsPressed(Input.InputDefRight) |
+            Input.IsPressed(Input.InputDefDown) |
+            Input.IsPressed(Input.InputDefUp);
         }
         public static bool IsPressedJump(){
             return Input.IsPressed(InputDefJump) ;

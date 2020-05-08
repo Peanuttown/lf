@@ -80,6 +80,7 @@
     <Compile Include="tzzMath.cs" />
     <Compile Include="scripts\FSM.cs" />
     <Compile Include="scripts\common\input.cs" />
+    <Compile Include="scripts\common\keyDef.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

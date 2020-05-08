@@ -1,9 +1,15 @@
+using System;
 namespace tzzGodot{
     public static class Key{
         public static int KeyDefMoveLeft;
-        public static void load(){
-            Godot.Collections.Array actions =Godot.InputMap.GetActions();
-           System.Console.WriteLine(actions[0]); 
+
+        public static void Load(){
+            //move left
+            Godot.Collections.Array moveLeftInput =Godot.InputMap.GetActionList(tzzGodot.Input.InputDefLeft);
+            foreach (Godot.InputEvent e in moveLeftInput){
+                if (e.GetType() == typeof(Godot.InputEventKey)){
+                }
+            }
         }
     }
 }

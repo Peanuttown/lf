@@ -16,9 +16,9 @@ public class RoleNeglected : RoleBase,tzzGodot.Owner
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Godot.InputEventKey k=new Godot.InputEventKey();
-        k.Scancode = (int)Godot.KeyList.K;
-        Godot.InputMap.ActionAddEvent(tzzGodot.Input.InputDefAttack,k);
+        //Godot.InputEventKey k=new Godot.InputEventKey();
+        //k.Scancode = (int)Godot.KeyList.K;
+        //Godot.InputMap.ActionAddEvent(tzzGodot.Input.InputDefAttack,k);
         tzzGodot.AnimatorSprite animator = new tzzGodot.AnimatorSprite(RoleNeglectedDef.Def.All,10,7);
         //todo set animator
         this.setAnimator(animator);
