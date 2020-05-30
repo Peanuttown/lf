@@ -40,7 +40,7 @@ public class AttackStateBase : StateBase
 
     public override void on_exit(dynamic args)
     {
-        Console.WriteLine("attack exit");
+        //reset animator
     }
 
     public override void handle_action(string action_name, object arg){

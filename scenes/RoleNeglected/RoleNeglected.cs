@@ -7,9 +7,7 @@ public class RoleNeglected : RoleBase,tzzGodot.Owner
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
-    public void OwnerMove(Godot.Vector2 vec){
-        this.Position +=vec;
-        Console.WriteLine(this.Position.x);
+    public void HandleAttackStateOver(){
 
     }
 

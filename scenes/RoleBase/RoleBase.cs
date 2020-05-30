@@ -2,15 +2,21 @@ using Godot;
 using System;
 using StateMachine;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 
-abstract public class  RoleBase : Node2D
+abstract public class  RoleBase : tzzGodot.Node25D
 {
+    public Vector3 speed =new Vector3(10,10,0);
     private tzzGodot.Animator animator;
     public static int IdleStateIdx = 0;
     public static int MoveStateIdx  =1;
     public static int JumpStateIdex= 2;
     public static int AttackStateIdx= 3;
+    public void OwnerMove(Godot.Vector3 vec){
+        this.z = Godot.Mathf.Max(this.z+vec.z,0);
+        this.Position +=tzzGodot.Node25D.ToVector2(vec);
+    }
 
     public void setAnimator(tzzGodot.Animator animator){
         this.animator = animator;
@@ -30,6 +36,7 @@ abstract public class  RoleBase : Node2D
         this.fSM = new FSM();
         states.ForEach(
             delegate(StateBase state){
+                Debug.WriteLine("register state "+ state.getStateName());
                 this.fSM.register_state(state.getStateName(),state);
             }
         );
@@ -95,11 +102,28 @@ abstract public class  RoleBase : Node2D
         this.fSM.handle_action(MoveStateBase.stateName,direction);
     }
 
+    public float VerticalSpeed(){
+        return this.speed.z;
+    }
+
+    public void setVerticalSpeed(float speed){
+        this.speed.z=speed;
+    }
 
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public void updateVerticalSpeed(float dt,float acceleration){
+        this.speed.z += dt * acceleration;
+    }
+
+    public void updatePos(float dt){
+        //vertical
+        float moveZ = dt * this.VerticalSpeed();
+        Vector2 direction  = tzzGodot.Input.getInputDirection();
+        Vector3 shift = new Vector3(
+            direction.x*this.speed.x*dt,
+            direction.y*dt*this.speed.y,moveZ);
+        Console.WriteLine(shift);
+        this.OwnerMove(shift);
+    }
+
 }

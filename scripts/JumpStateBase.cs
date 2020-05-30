@@ -13,18 +13,30 @@ public class JumpStateBase : StateBase
         //todo
     }
     public override void on_enter(dynamic args){
+        this.owner.setVerticalSpeed(100);
         //todo
     }
 
     public override void on_exit(dynamic args){
-        //todo
+        System.Diagnostics.Debug.WriteLine("jump exit");
+        this.owner.setVerticalSpeed(0);
     }
 
     public override void handle_action(string action_name, dynamic arg){
+
         //todo
     }
 
+
     public override void handle_physics_process(float dt){
+        //get input direction
+        this.owner.updatePos(dt);
+        this.owner.updateVerticalSpeed(dt,tzzGodot.Define.Gravity_Accelaration);
+        if (owner.onGround()){
+            System.Diagnostics.Debug.WriteLine("on ground");
+            this.state_over();
+        }
+
 
     }   // private int a = 2;
 }

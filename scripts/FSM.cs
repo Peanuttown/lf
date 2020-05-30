@@ -31,11 +31,17 @@ namespace StateMachine{
             Debug.WriteLine(String.Format("cur state {0}",this.cur_state().getStateName()));
         }
 
+        private bool hasStateOnStack(){
+            return this.state_stack.Count > 0;
+        }
+
         public void pop_state(){
             if (this.state_stack.Count >0){
-                this.state_stack.Pop();
+                this.state_stack.Pop().on_exit(null);
+                if (this.hasStateOnStack()){
+                    this.state_stack.Peek().on_resume_from_fsm_stack();
+                }
             }
-            Debug.WriteLine(String.Format("cur state {0}",this.cur_state().getStateName()));
         }
 
         private bool stating(){

@@ -100,7 +100,7 @@ public class ComboMgr:GDScript
     private int pendingAction;
     private int comboIndex;
     public ComboMgr(List<Action> actions,int maxPendingAction,RoleBase selfRole){
-        this.maxPendingAction = (maxPendingAction<=0?1:maxPendingAction);
+        this.maxPendingAction = (maxPendingAction<=0?0:maxPendingAction);
         this.actions = actions;
         this.pendingAction = 0;
         this.selfRole = selfRole;

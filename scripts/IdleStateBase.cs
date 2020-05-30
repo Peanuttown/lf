@@ -19,6 +19,10 @@ public class IdleStateBase : StateBase
         Debug.WriteLine(String.Format("%s on exit",this.getStateName()));
     }
 
+    public override void on_resume_from_fsm_stack(){
+        this.owner.getAnimator().showWithFrameIdx(0);
+    }
+
     public override void handle_action(string action_name, dynamic arg){
         //todo
     }

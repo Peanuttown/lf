@@ -81,6 +81,8 @@
     <Compile Include="scripts\FSM.cs" />
     <Compile Include="scripts\common\input.cs" />
     <Compile Include="scripts\common\keyDef.cs" />
+    <Compile Include="scripts\define\define.cs" />
+    <Compile Include="scripts\common\Node25D.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
