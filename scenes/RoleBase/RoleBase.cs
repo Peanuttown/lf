@@ -7,7 +7,9 @@ using System.Diagnostics;
 
 abstract public class  RoleBase : tzzGodot.Node25D
 {
-    public Vector3 speed =new Vector3(10,10,0);
+    private int Count;
+    private bool direction = true;
+    public Vector3 speed =new Vector3(0,0,0);
     private tzzGodot.Animator animator;
     public static int IdleStateIdx = 0;
     public static int MoveStateIdx  =1;
@@ -36,7 +38,7 @@ abstract public class  RoleBase : tzzGodot.Node25D
         this.fSM = new FSM();
         states.ForEach(
             delegate(StateBase state){
-                Debug.WriteLine("register state "+ state.getStateName());
+                //Debug.WriteLine("register state "+ state.getStateName());
                 this.fSM.register_state(state.getStateName(),state);
             }
         );
@@ -50,6 +52,7 @@ abstract public class  RoleBase : tzzGodot.Node25D
     public JumpStateBase jumpState;
 
     public MoveStateBase moveState;
+    public RunStateBase runState;
 
 
     public void handle_physics_process(float dt){
@@ -62,6 +65,9 @@ abstract public class  RoleBase : tzzGodot.Node25D
     public override void _PhysicsProcess(float dt){
         this.handle_physics_process(dt);
     }
+    public override void _Input(InputEvent @event){
+    }
+
 
     private bool is_attacking(){
         return this.curStateName()==AttackStateBase.stateName;
@@ -94,12 +100,17 @@ abstract public class  RoleBase : tzzGodot.Node25D
         }
     }
 
-    public void Move(Vector2 direction){
+    public void Move(Godot.Vector2 dirc){
         if (this.is_idle()){
-            this.fSM.push_state(MoveStateBase.stateName,direction);
+            this.fSM.push_state(MoveStateBase.stateName,dirc);
             return;
         }
-        this.fSM.handle_action(MoveStateBase.stateName,direction);
+        this.fSM.handle_action(MoveStateBase.stateName,dirc);
+    }
+    public void Run(bool right){
+        if (this.is_idle() || this.is_moving()){
+            this.fSM.push_state(RunStateDef.Def.StateName,right);
+        }
     }
 
     public float VerticalSpeed(){
@@ -120,10 +131,46 @@ abstract public class  RoleBase : tzzGodot.Node25D
         float moveZ = dt * this.VerticalSpeed();
         Vector2 direction  = tzzGodot.Input.getInputDirection();
         Vector3 shift = new Vector3(
-            direction.x*this.speed.x*dt,
-            direction.y*dt*this.speed.y,moveZ);
-        Console.WriteLine(shift);
+            this.speed.x*dt,
+            dt*this.speed.y,moveZ);
+        //Console.WriteLine(shift);
         this.OwnerMove(shift);
+    }
+    public bool GetDirection(){
+        return this.direction;
+    }
+    public override void _UnhandledInput(InputEvent @event){
+        //Debug.WriteLine("role base unhandle input");
+        this.fSM.handle_input(@event);
+    }
+    public void SetXSpeed(float speed){
+        this.speed.x = speed;
+    }
+    public float GetXSpeed(){
+        return this.speed.x;
+    }
+
+    public void ChangeFaceDirection(Vector2 vec){
+        //Debug.WriteLine("change face direction ");
+        if (vec.x > 0){
+            this.animator.SetFlipH(false);
+            this.direction= true;
+        }else if (vec.x <0) {
+            this.animator.SetFlipH(true);
+            this.direction=false;
+        }
+    }
+    public Godot.SceneTree get_tree(){
+        return this.GetTree();
+    }
+    public void set_speed(Godot.Vector3 v){
+        this.speed = v;
+    }
+    public Godot.Vector3 get_speed(){
+        return this.speed;
+    }
+    public void set_y_speed(float v){
+        this.speed.y = v;
     }
 
 }

@@ -16,10 +16,10 @@ public class IdleStateBase : StateBase
     }
 
     public override void on_exit(dynamic args){
-        Debug.WriteLine(String.Format("%s on exit",this.getStateName()));
     }
 
     public override void on_resume_from_fsm_stack(){
+        this.owner.set_speed(new Vector3(0,0,0));
         this.owner.getAnimator().showWithFrameIdx(0);
     }
 

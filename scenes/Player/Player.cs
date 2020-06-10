@@ -9,6 +9,7 @@ public class Player : Node2D
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
+    private Godot.InputEvent lastMoveEvent;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -19,7 +20,6 @@ public class Player : Node2D
     public override void _UnhandledKeyInput(InputEventKey @event){
         if (tzzGodot.Input.IsAttack(@event))
         {
-            Console.WriteLine("unhandle" + ((Godot.InputEventKey)@event).Scancode);
             this.role.Attack();
         }
         else if (tzzGodot.Input.IsJump(@event))
@@ -28,6 +28,7 @@ public class Player : Node2D
         }
         else if (tzzGodot.Input.IsMove(@event))
         {
+            //Debug.WriteLine("play move");
             this.role.Move(tzzGodot.Input.getInputDirection(@event));
         }
         GetTree().SetInputAsHandled();
@@ -39,10 +40,4 @@ public class Player : Node2D
             this.role.Move(tzzGodot.Input.getInputDirection());
         }
     }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }

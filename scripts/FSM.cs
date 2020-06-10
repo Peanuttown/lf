@@ -22,13 +22,20 @@ namespace StateMachine{
         }
 
         public void push_state(string name,object args){
+            Debug.WriteLine(String.Format("push state {0}",name));
             StateBase state = this.States[name];
             if (state == null){
                 throw new Exception(String.Format("state [{0}] undefined",name));
             }
-            state.on_enter(args);
+            //if (name == MoveStateBase.stateName){
+            //    if (this.state_stack.Peek().getStateName()==RunStateDef.Def.StateName){
+            //        throw(new Exception("walk push on run"));
+            //    }
+
+            //}
             this.state_stack.Push(state);
-            Debug.WriteLine(String.Format("cur state {0}",this.cur_state().getStateName()));
+            state.on_enter(args);
+            //Debug.WriteLine(String.Format("cur state {0}",this.cur_state().getStateName()));
         }
 
         private bool hasStateOnStack(){
@@ -74,6 +81,12 @@ namespace StateMachine{
             StateBase curState = this.cur_state();
             if (curState!=null){
                 curState.handle_physics_process(dt);
+            }
+        }
+        public void handle_input(Godot.InputEvent @event){
+            StateBase curState = this.cur_state();
+            if (curState!=null){
+                curState.handle_input_event(@event);
             }
         }
     }

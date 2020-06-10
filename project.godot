@@ -8,44 +8,9 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "Action",
-"language": "GDScript",
-"path": "res://scripts/Action.gd"
-}, {
-"base": "Node",
-"class": "Combo",
-"language": "GDScript",
-"path": "res://scripts/Combo.gd"
-}, {
-"base": "Node2D",
-"class": "Pseudo3D",
-"language": "GDScript",
-"path": "res://scripts/Pseudo3D.gd"
-}, {
-"base": "State",
-"class": "RoleStateBase",
-"language": "GDScript",
-"path": "res://scenes/RoleStateBase.gd"
-}, {
-"base": "Node",
-"class": "State",
-"language": "GDScript",
-"path": "res://scripts/State.gd"
-}, {
-"base": "Node",
-"class": "StateMachine",
-"language": "GDScript",
-"path": "res://scripts/StateMachine.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"Action": "",
-"Combo": "",
-"Pseudo3D": "",
-"RoleStateBase": "",
-"State": "",
-"StateMachine": ""
+
 }
 
 [application]

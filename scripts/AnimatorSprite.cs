@@ -1,4 +1,41 @@
+using System;
+using System.Diagnostics;
 namespace tzzGodot{
+    public class AnimatorSpriteContinous{
+        private float duration;
+        private float timeAcc;
+        private int start;
+        private int end;
+        private Animator animator;
+        public AnimatorSpriteContinous(Animator animator,float duration,int start,int end){
+            if (end == start){
+                throw new Exception("end can not equal start");
+            }
+            this.animator = animator;
+            this.duration = duration;
+            this.timeAcc = 0;
+            this.start= start;
+            this.end = end;
+        }
+        public void Update(float dt){
+            this.timeAcc += dt;
+            int length = (end-start+1);
+            int index  = (int)(this.timeAcc/this.duration);
+            int offset = (index % (length*2));
+            if (offset < length){
+                offset = start + offset;
+            }else{
+                offset =end - (offset-length);
+            }
+            this.animator.showWithFrameIdx(offset);
+        }
+
+        public void Reset(){
+            this.timeAcc = 0;
+            this.animator.showWithFrameIdx(0);
+        }
+        
+    }
     public class AnimatorSprite:Animator{
         private Godot.Sprite sprite;
 
@@ -27,7 +64,16 @@ namespace tzzGodot{
             //todo
         }
         public override void showWithFrameIdx(int frameIdx){
+            //Debug.WriteLine(Environment.StackTrace);
+            //Debug.WriteLine("currnet frame "+frameIdx);
             this.sprite.Frame = frameIdx;
+        }
+
+        public override void SetFlipV(bool f){
+            this.sprite.FlipV =f;
+        }
+        public override void SetFlipH(bool f){
+            this.sprite.FlipH=f;
         }
     }
 }

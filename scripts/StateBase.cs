@@ -15,10 +15,10 @@ abstract public class StateBase :Godot.Object//: Node
     public virtual void on_resume_from_fsm_stack(){
         //empy impl
     }
-    
     public StateBase(tzzGodot.Owner owner){
         this.owner = owner;
     }
+
 
     public abstract void handle_action(string action_name,object arg);
 
@@ -29,7 +29,10 @@ abstract public class StateBase :Godot.Object//: Node
         EmitSignal(nameof(SigStateOver),arg);
     }
     public void connect_state_over(Godot.Object target,string method ){
-        Debug.WriteLine("connect signal "+target);
+        //Debug.WriteLine("connect signal "+target);
         this.Connect(nameof(SigStateOver),target,method);
+    }
+    public virtual void handle_input_event(Godot.InputEvent @event){
+
     }
 }

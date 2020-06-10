@@ -22,9 +22,10 @@ public class RoleNeglected : RoleBase,tzzGodot.Owner
         this.setAnimator(animator);
         List<StateBase> states =new List<StateBase>();
         states.Add(new RoleNeglectedIdleState(this));
-        states.Add(new RoleNeglectedMoveState(this));
+        states.Add(new RoleNeglectedMoveState(this,new tzzGodot.AnimatorSpriteContinous(animator,(float)(0.3),4,7)));
         states.Add(new RoleNeglectedJumpState(this));
         states.Add(new RoleNeglectedAttackState(this,this));
+        states.Add(new RoleNeglectedRun(this,new tzzGodot.AnimatorSpriteContinous(animator,(float)(0.2),20,22)));
         this.RegisterState(
             states
         );

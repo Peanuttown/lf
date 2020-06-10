@@ -65,14 +65,15 @@
     <Compile Include="scenes\RoleNeglected\RoleNeglectedJump.cs" />
     <Compile Include="scenes\RoleNeglected\RoleNeglectedAttack.cs" />
     <Compile Include="scenes\RoleNeglected\RoleNeglectedAction.cs" />
+    <Compile Include="scenes\RoleNeglected\RoleNeglectedRun.cs" />
     <Compile Include="scenes\RoleNeglected\RoleNeglectedDef.cs" />
-    <Compile Include="scenes\TestScene\MonoTest\MonoTest.cs" />
     <Compile Include="scripts\AttackStateBase.cs" />
     <Compile Include="scripts\comboMgr.cs" />
     <Compile Include="scripts\common\Global.cs" />
     <Compile Include="scripts\IdleStateBase.cs" />
     <Compile Include="scripts\JumpStateBase.cs" />
     <Compile Include="scripts\MoveStateBase.cs" />
+    <Compile Include="scripts\RunStateBase.cs" />
     <Compile Include="scripts\Animator.cs" />
     <Compile Include="scripts\AnimatorSprite.cs" />
     <Compile Include="scripts\StateBase.cs" />
