@@ -47,7 +47,9 @@ public class RunStateBase:StateBase{
             if (eventK.IsActionReleased(tzzGodot.Input.InputDefLeft) ||eventK.IsActionReleased(tzzGodot.Input.InputDefRight)){
                 this.state_over();
                 return;
-
+            }
+            if (eventK.IsActionReleased(tzzGodot.Input.InputDefUp) ||eventK.IsActionReleased(tzzGodot.Input.InputDefDown)){
+                this.owner.set_y_speed(0);
             }
             if (eventK.IsActionReleased(tzzGodot.Input.InputDefRight)&&faceright){
                 this.state_over();

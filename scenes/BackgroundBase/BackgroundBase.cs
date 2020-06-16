@@ -1,0 +1,18 @@
+using Godot;
+using System;
+using System.Diagnostics;
+
+public abstract class BackgroundBase : Node2D
+{
+    public Godot.Sprite[]  sprites;
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = "text";
+
+    // Called when the node enters the scene tree for the first time.
+    public abstract void init();
+    public override void _Ready()
+    {
+        this.init();
+    }
+}

@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="scenes\BackgroundBase\BackgroundBase.cs" />
+    <Compile Include="scenes\Battle\Battle.cs" />
     <Compile Include="scenes\Player\Player.cs" />
     <Compile Include="scenes\RoleBase\Role.cs" />
     <Compile Include="scenes\RoleBase\RoleBase.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="scripts\common\keyDef.cs" />
     <Compile Include="scripts\define\define.cs" />
     <Compile Include="scripts\common\Node25D.cs" />
+    <Compile Include="scripts\common\Scene.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
