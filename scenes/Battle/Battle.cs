@@ -17,7 +17,9 @@ public class Battle : Node2D
     }
     public void init(){
         //load player
-        this.AddChild(tzzGodot.Scene.load_scene_resource("res://scenes/Player/Player.tscn").Instance());
+        this.player =(Player)tzzGodot.Scene.load_scene_resource("res://scenes/Player/Player.tscn").Instance();
+        this.AddChild(this.player);
+        //load background
         //todo
 
     }

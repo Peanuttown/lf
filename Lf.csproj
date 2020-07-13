@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scenes\BackgroundBase\BackgroundBase.cs" />
+    <Compile Include="scenes\BackgroundBase\gw\groud.cs" />
     <Compile Include="scenes\Battle\Battle.cs" />
+    <Compile Include="scenes\Menu\Menu.cs" />
     <Compile Include="scenes\Player\Player.cs" />
     <Compile Include="scenes\RoleBase\Role.cs" />
     <Compile Include="scenes\RoleBase\RoleBase.cs" />
@@ -87,6 +89,9 @@
     <Compile Include="scripts\define\define.cs" />
     <Compile Include="scripts\common\Node25D.cs" />
     <Compile Include="scripts\common\Scene.cs" />
+    <Compile Include="scripts\common\BackgroundRepo.cs" />
+    <Compile Include="scripts\common\screen.cs" />
+    <Compile Include="scripts\common\error.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
