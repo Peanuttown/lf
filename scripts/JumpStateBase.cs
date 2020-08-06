@@ -3,7 +3,7 @@ using System;
 
 public class JumpStateBase : StateBase
 {
-
+    public tzzGodot.ActionV2 jump_action;
     public const string stateName = "jump";
     // Declare member variables here. Examples:
     public override string getStateName(){
@@ -11,6 +11,9 @@ public class JumpStateBase : StateBase
     }
      public JumpStateBase(tzzGodot.Owner owner):base(owner){
         //todo
+    }
+    public void set_jump_action(tzzGodot.ActionV2 jump_action){
+        this.jump_action = jump_action;
     }
     public override void on_enter(dynamic args){
         this.owner.setVerticalSpeed(100);

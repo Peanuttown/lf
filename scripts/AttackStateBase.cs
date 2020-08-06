@@ -21,11 +21,6 @@ public class AttackStateBase : StateBase
     // Called when the node enters the scene tree for the first time.
     private void Attack()
     {
-        StackTrace st =new StackTrace(1);
-        foreach (StackFrame frame in st.GetFrames()){
-            Debug.WriteLine(frame);
-        }
-        Console.WriteLine("attack");
         this.comboMgr.Combo();
     }
 

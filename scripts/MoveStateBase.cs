@@ -24,7 +24,6 @@ public class MoveStateBase : StateBase
         //change speed
         Godot.Vector2  dirc= (Godot.Vector2)(args);
         this.owner.set_speed(new Godot.Vector3(dirc.x*30,dirc.y*30,0));
-        Debug.WriteLine("move on enter dirc"+dirc);
         Godot.Vector2 prevMove =this.prevMove;
         DateTime prevMoveTime = this.prevMoveTime;
         this.prevMove = dirc;

@@ -92,6 +92,9 @@
     <Compile Include="scripts\common\BackgroundRepo.cs" />
     <Compile Include="scripts\common\screen.cs" />
     <Compile Include="scripts\common\error.cs" />
+    <Compile Include="scripts\common\ActionV2.cs" />
+    <Compile Include="scripts\common\ActionSingle.cs" />
+    <Compile Include="scripts\common\ActionMulti.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,6 +2,27 @@ using System.Diagnostics;
 using RoleNeglectedDef;
 using System.Collections.Generic;
 
+namespace Define{
+    static public class RoleNeglectedSpriteIdx{
+        public static int Idel0=0;
+        public static int Idel3=3;
+        public static int Walk0=4;
+        public static int Walk3=7;
+        public static int RightPunchReady=10;
+        public static int RightPunch=11;
+        public static int LeftPunchReady=12;
+        public static int LeftPunch=13;
+        public static int KickReady=14;
+        public static int Kick=15;
+        public static int Run0=20;
+        public static int Run2=22;
+
+        public static int JumpReady0=70;
+        public static int JumpReady1=71;
+        public static int Jump=72;
+    }
+}
+
 public class RoleNeglectedAction_Attack_Action_Base:Action{
     public override void showAction(float dt,float elapseTime,tzzGodot.Animator animator){
         this.showSubAction(dt,elapseTime,animator);
@@ -72,5 +93,34 @@ public class  RoleNeglectedAction_Attack_StraightPunch_Left:RoleNeglectedAction_
     public override void showAction(float dt,float elapseTime,tzzGodot.Animator animator){
         this.showSubAction(dt,elapseTime,animator);
     }
+}
 
+public class JumpAction:tzzGodot.ActionMulti{
+    public JumpAction(){
+        this.actions=new List<tzzGodot.ActionV2>();
+        this.actions.Add(new JumpActionSquatDown(Define.RoleNeglectedSpriteIdx.JumpReady0,(float)0.3));
+        this.actions.Add(new JumpActionSquatDown(Define.RoleNeglectedSpriteIdx.JumpReady1,(float)0.3));
+        this.actions.Add(new JumpActionJump());
+    }
+    private class JumpActionSquatDown:tzzGodot.ActionSingle{
+        public int frameIdx;
+        public JumpActionSquatDown(int frameIdx,float duration):base(duration){
+            this.frameIdx = frameIdx;
+        }
+        public override void DoAction(tzzGodot.Actioner actioner,float timeAcc,float dt){
+            RoleBase role = actioner as RoleBase;
+            role.getAnimator().showWithFrameIdx(this.frameIdx);
+        }
+    }
+    public class JumpActionJump:tzzGodot.ActionV2{
+        public JumpActionJump(float duration){
+
+        }
+        public override void Do(tzzGodot.Actioner actioner,  float dt){
+            RoleBase role = actioner as RoleBase;
+            role.getAnimator().showWithFrameIdx(Define.RoleNeglectedSpriteIdx.Jump);
+            // < move  actioner
+            // >
+        }
+    }
 }

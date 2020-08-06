@@ -129,7 +129,6 @@ public class ComboMgr:GDScript
             if (actionOver){
                 this.pendingAction --;
                 if (this.pendingAction==0){
-                    System.Console.WriteLine("combo over");
                     this.combo_over();
                 }else{
                     this.comboIndex = (this.comboIndex+1)%this.actions.Count;

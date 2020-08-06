@@ -10,8 +10,7 @@ public class Global:Godot.Node2D
         public override void _Ready(){
             //<init bg_repo
             this.bg_repo = new BackgroundRepo();
-            //this.bg_repo.register_repo()
-
+            this.bg_repo.register_repo(tzzGodot.Define.BG_GW,"res://scenes/BackgroundBase/gw/bg_great_wall.tscn");
             //
         }
     }
